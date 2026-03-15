@@ -1,10 +1,8 @@
 name = "ai-token-tools"
 compatibility_date = "2024-07-01"
 
+send_metrics = false
+
 [pages]
 directory = "dist"
 build_command = "npm run build"
-
-[build]
-command = "npm run build"
-publish = "dist"
