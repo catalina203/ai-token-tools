@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
@@ -57,6 +58,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4895183919797557" crossOrigin="anonymous"></script>
+      </Head>
       <body className={inter.className}>
         <div className="flex flex-col min-h-screen">
           <Header />
