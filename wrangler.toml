@@ -6,3 +6,4 @@ send_metrics = false
 [pages]
 directory = "dist"
 build_command = "npm run build"
+pages_build_output_dir = "dist"
