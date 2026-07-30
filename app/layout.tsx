@@ -36,11 +36,20 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://aitokentools.com',
     siteName: 'AI Token Tools',
+    images: [
+      {
+        url: 'https://aitokentools.com/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: 'AI Token Tools - Free AI Developer Tools',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AI Token Tools - Free AI Developer Tools',
     description: 'Free AI developer tools for token calculation, cost estimation, and prompt optimization.',
+    images: ['https://aitokentools.com/og-image.svg'],
   },
   robots: {
     index: true,

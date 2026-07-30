@@ -19,6 +19,22 @@ export const metadata: Metadata = {
     title: 'Prompt Diff Tool - Compare AI Prompts',
     description: 'Compare two prompts side by side and highlight the differences. Perfect for tracking prompt iterations and changes.',
     type: 'website',
+    url: 'https://aitokentools.com/tools/prompt-diff',
+    siteName: 'AI Token Tools',
+    images: [
+      {
+        url: 'https://aitokentools.com/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Prompt Diff Tool - Compare AI Prompts',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Prompt Diff Tool - Compare AI Prompts',
+    description: 'Compare two prompts side by side and highlight the differences. Perfect for tracking prompt iterations and changes.',
+    images: ['https://aitokentools.com/og-image.svg'],
   },
   alternates: {
     canonical: 'https://aitokentools.com/tools/prompt-diff',

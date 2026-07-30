@@ -14,6 +14,41 @@ export const metadata: Metadata = {
   title: 'All AI Tools - AI Token Tools',
   description:
     'Browse all our free AI developer tools. Token calculators, cost estimators, prompt formatters, and more.',
+  keywords: [
+    'AI developer tools',
+    'token calculator',
+    'AI cost estimator',
+    'prompt formatter',
+    'AI model comparison',
+    'AI tools',
+    'developer tools',
+  ],
+  openGraph: {
+    title: 'All AI Tools - AI Token Tools',
+    description:
+      'Browse all our free AI developer tools. Token calculators, cost estimators, prompt formatters, and more.',
+    type: 'website',
+    url: 'https://aitokentools.com/tools',
+    siteName: 'AI Token Tools',
+    images: [
+      {
+        url: 'https://aitokentools.com/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: 'AI Token Tools - Free AI Developer Tools',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'All AI Tools - AI Token Tools',
+    description:
+      'Browse all our free AI developer tools. Token calculators, cost estimators, prompt formatters, and more.',
+    images: ['https://aitokentools.com/og-image.svg'],
+  },
+  alternates: {
+    canonical: 'https://aitokentools.com/tools',
+  },
 }
 
 const tools = [

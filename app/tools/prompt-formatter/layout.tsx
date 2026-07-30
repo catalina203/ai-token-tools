@@ -19,6 +19,22 @@ export const metadata: Metadata = {
     title: 'Prompt Formatter - Structure AI Prompts',
     description: 'Format and structure your AI prompts with proper system, user, and assistant message formatting. Export to JSON or XML.',
     type: 'website',
+    url: 'https://aitokentools.com/tools/prompt-formatter',
+    siteName: 'AI Token Tools',
+    images: [
+      {
+        url: 'https://aitokentools.com/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Prompt Formatter - Structure AI Prompts',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Prompt Formatter - Structure AI Prompts',
+    description: 'Format and structure your AI prompts with proper system, user, and assistant message formatting. Export to JSON or XML.',
+    images: ['https://aitokentools.com/og-image.svg'],
   },
   alternates: {
     canonical: 'https://aitokentools.com/tools/prompt-formatter',

@@ -16,6 +16,22 @@ export const metadata: Metadata = {
     title: 'User Guide - AI Token Tools',
     description: 'Comprehensive guides for using AI Token Tools. Learn how to use token calculators, prompt formatters, and other AI developer tools.',
     type: 'website',
+    url: 'https://aitokentools.com/guide',
+    siteName: 'AI Token Tools',
+    images: [
+      {
+        url: 'https://aitokentools.com/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: 'User Guide - AI Token Tools',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'User Guide - AI Token Tools',
+    description: 'Comprehensive guides for using AI Token Tools. Learn how to use token calculators, prompt formatters, and other AI developer tools.',
+    images: ['https://aitokentools.com/og-image.svg'],
   },
   alternates: {
     canonical: 'https://aitokentools.com/guide',

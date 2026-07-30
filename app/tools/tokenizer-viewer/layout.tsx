@@ -19,6 +19,22 @@ export const metadata: Metadata = {
     title: 'Tokenizer Viewer - Visualize Tokenization',
     description: 'Visualize how text is split into tokens. Understand tokenization for better prompt engineering and cost optimization.',
     type: 'website',
+    url: 'https://aitokentools.com/tools/tokenizer-viewer',
+    siteName: 'AI Token Tools',
+    images: [
+      {
+        url: 'https://aitokentools.com/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Tokenizer Viewer - Visualize Tokenization',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tokenizer Viewer - Visualize Tokenization',
+    description: 'Visualize how text is split into tokens. Understand tokenization for better prompt engineering and cost optimization.',
+    images: ['https://aitokentools.com/og-image.svg'],
   },
   alternates: {
     canonical: 'https://aitokentools.com/tools/tokenizer-viewer',

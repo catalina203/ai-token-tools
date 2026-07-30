@@ -19,6 +19,22 @@ export const metadata: Metadata = {
     title: 'Token Calculator - Calculate AI Token Count',
     description: 'Calculate the estimated token count for your text. Supports multiple languages including English, Chinese, and code.',
     type: 'website',
+    url: 'https://aitokentools.com/tools/token-calculator',
+    siteName: 'AI Token Tools',
+    images: [
+      {
+        url: 'https://aitokentools.com/og-image.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Token Calculator - Calculate AI Token Count',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Token Calculator - Calculate AI Token Count',
+    description: 'Calculate the estimated token count for your text. Supports multiple languages including English, Chinese, and code.',
+    images: ['https://aitokentools.com/og-image.svg'],
   },
   alternates: {
     canonical: 'https://aitokentools.com/tools/token-calculator',
