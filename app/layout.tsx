@@ -76,6 +76,19 @@ export default function RootLayout({
           <main className="flex-grow">{children}</main>
           <Footer />
         </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "AI Token Tools",
+              url: "https://aitokentools.com",
+              description:
+                "Free AI developer tools for token calculation, cost estimation, prompt optimization, and model price comparison.",
+            }),
+          }}
+        />
       </body>
     </html>
   )

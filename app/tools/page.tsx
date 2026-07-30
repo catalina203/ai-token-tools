@@ -170,6 +170,19 @@ export default function ToolsPage() {
           </div>
         </div>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "All AI Tools",
+            url: "https://aitokentools.com/tools",
+            description:
+              "Browse all our free AI developer tools. Token calculators, cost estimators, prompt formatters, and more.",
+          }),
+        }}
+      />
     </div>
   )
 }

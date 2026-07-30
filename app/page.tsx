@@ -250,6 +250,44 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              name: "AI Token Tools",
+              url: "https://aitokentools.com",
+              description:
+                "Free AI developer tools for token calculation, cost estimation, prompt optimization, and model price comparison.",
+              applicationCategory: "DeveloperApplication",
+              operatingSystem: "All",
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "USD",
+              },
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "AI Token Tools",
+              url: "https://aitokentools.com",
+              description:
+                "Free AI developer tools for token calculation, cost estimation, prompt optimization, and model price comparison.",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: "https://aitokentools.com/tools?q={search_term_string}",
+                },
+                "query-input": "required name=search_term_string",
+              },
+            },
+          ]),
+        }}
+      />
     </div>
   )
 }

@@ -384,6 +384,67 @@ export default function ModelPriceComparisonPage() {
           </div>
         </div>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebApplication",
+                name: "AI Model Price Comparison",
+                url: "https://aitokentools.com/tools/model-price-comparison",
+                description:
+                  "Compare AI model prices from OpenAI, Anthropic, Google, and more. Find the most cost-effective option for your AI applications.",
+                applicationCategory: "DeveloperApplication",
+                operatingSystem: "All",
+                offers: {
+                  "@type": "Offer",
+                  price: "0",
+                  priceCurrency: "USD",
+                },
+              },
+              {
+                "@type": "FAQPage",
+                mainEntity: [
+                  {
+                    "@type": "Question",
+                    name: "How often are these prices updated?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "We strive to keep pricing current, but AI providers frequently adjust pricing. Always verify on official provider websites.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "What is context length and why does it matter?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Context length is the maximum number of tokens a model can process in a single request. Longer context allows processing larger documents and maintaining longer conversations.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Are there any hidden costs?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "Base API usage costs are shown. Some providers may have additional fees for fine-tuning, dedicated instances, or premium support.",
+                    },
+                  },
+                  {
+                    "@type": "Question",
+                    name: "Which provider should I choose?",
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: "The best provider depends on your needs. Consider pricing, capabilities, context length, and API reliability when making your choice.",
+                    },
+                  },
+                ],
+              },
+            ],
+          }),
+        }}
+      />
     </div>
   )
 }

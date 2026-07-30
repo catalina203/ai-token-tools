@@ -206,6 +206,19 @@ export default function GuidePage() {
           </div>
         </div>
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "User Guide - AI Token Tools",
+            url: "https://aitokentools.com/guide",
+            description:
+              "Comprehensive guides for using AI Token Tools. Learn how to use token calculators, prompt formatters, and other AI developer tools.",
+          }),
+        }}
+      />
     </div>
   )
 }
