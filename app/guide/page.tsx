@@ -127,17 +127,17 @@ export default function GuidePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center p-3 bg-primary-100 rounded-xl mb-4">
-            <BookOpen className="h-8 w-8 text-primary-600" />
+          <div className="inline-flex items-center justify-center p-3 bg-primary-100 dark:bg-primary-900/30 rounded-xl mb-4">
+            <BookOpen className="h-8 w-8 text-primary-600 dark:text-primary-400" />
           </div>
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             User Guide
           </h1>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
             Comprehensive guides for using AI Token Tools effectively
           </p>
         </div>
@@ -145,26 +145,26 @@ export default function GuidePage() {
         {/* Guide Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {guides.map((guide) => (
-            <div key={guide.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+            <div key={guide.id} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-colors">
               <div className="p-6">
                 <div className="flex items-center mb-4">
                   {guide.icon}
-                  <h2 className="ml-3 text-xl font-semibold text-gray-900">
+                  <h2 className="ml-3 text-xl font-semibold text-gray-900 dark:text-gray-100">
                     {guide.title}
                   </h2>
                 </div>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
                   {guide.description}
                 </p>
                 <div className="space-y-2 mb-4">
                   {guide.steps.map((step, index) => (
                     <div key={index} className="flex items-start">
-                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-primary-100 flex items-center justify-center mt-0.5">
-                        <span className="text-xs font-medium text-primary-600">
+                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mt-0.5">
+                        <span className="text-xs font-medium text-primary-600 dark:text-primary-400">
                           {index + 1}
                         </span>
                       </div>
-                      <p className="ml-3 text-sm text-gray-600">
+                      <p className="ml-3 text-sm text-gray-600 dark:text-gray-300">
                         {step}
                       </p>
                     </div>
@@ -172,7 +172,7 @@ export default function GuidePage() {
                 </div>
                 <a
                   href={`/tools/${guide.id}`}
-                  className="inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-500"
+                  className="inline-flex items-center text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-500 dark:hover:text-primary-300"
                 >
                   Try this tool
                   <ChevronRight className="ml-1 h-4 w-4" />
@@ -183,11 +183,11 @@ export default function GuidePage() {
         </div>
 
         {/* Additional Tips */}
-        <div className="mt-12 bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+        <div className="mt-12 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 transition-colors">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
             General Tips
           </h2>
-          <div className="space-y-3 text-gray-600">
+          <div className="space-y-3 text-gray-600 dark:text-gray-300">
             <p>
               <strong>Token Efficiency:</strong> Keep your prompts concise to reduce token usage and costs.
             </p>

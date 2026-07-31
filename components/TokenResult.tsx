@@ -28,26 +28,26 @@ export default function TokenResult({
   const percentage = limit ? Math.min(100, (tokenCount / limit) * 100) : 0
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+    <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 shadow-sm transition-colors">
       <div className="flex items-center gap-2 mb-4">
         {isOverLimit ? (
           <AlertCircle className="h-5 w-5 text-red-500" />
         ) : (
           <CheckCircle className="h-5 w-5 text-green-500" />
         )}
-        <h3 className="text-lg font-semibold text-gray-900">Result</h3>
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Result</h3>
       </div>
 
       <div className="grid grid-cols-2 gap-4 mb-4">
-        <div className="bg-primary-50 rounded-lg p-4">
-          <p className="text-sm text-gray-600 mb-1">Estimated Tokens</p>
-          <p className="text-3xl font-bold text-primary-600">
+        <div className="bg-primary-50 dark:bg-primary-900/20 rounded-lg p-4">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Estimated Tokens</p>
+          <p className="text-3xl font-bold text-primary-600 dark:text-primary-400">
             {tokenCount.toLocaleString()}
           </p>
         </div>
-        <div className="bg-gray-50 rounded-lg p-4">
-          <p className="text-sm text-gray-600 mb-1">Characters</p>
-          <p className="text-3xl font-bold text-gray-700">
+        <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Characters</p>
+          <p className="text-3xl font-bold text-gray-700 dark:text-gray-200">
             {characterCount.toLocaleString()}
           </p>
         </div>
@@ -56,12 +56,12 @@ export default function TokenResult({
       {limit && (
         <div className="mb-4">
           <div className="flex justify-between text-sm mb-2">
-            <span className="text-gray-600">Context Usage</span>
-            <span className={isOverLimit ? 'text-red-600 font-medium' : 'text-gray-900'}>
+            <span className="text-gray-600 dark:text-gray-400">Context Usage</span>
+            <span className={isOverLimit ? 'text-red-600 font-medium' : 'text-gray-900 dark:text-gray-100'}>
               {percentage.toFixed(1)}% of {limit.toLocaleString()}
             </span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2.5">
+          <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5">
             <div
               className={`h-2.5 rounded-full transition-all ${
                 isOverLimit
@@ -83,39 +83,39 @@ export default function TokenResult({
       )}
 
       {showBreakdown && breakdown && (
-        <div className="border-t border-gray-200 pt-4 mt-4">
-          <p className="text-sm font-medium text-gray-700 mb-3 flex items-center gap-1">
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-4 mt-4">
+          <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 flex items-center gap-1">
             <Info className="h-4 w-4" />
             Token Breakdown
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm">
             {breakdown.words !== undefined && (
               <div className="flex justify-between">
-                <span className="text-gray-600">Words:</span>
+                <span className="text-gray-600 dark:text-gray-400">Words:</span>
                 <span className="font-medium">{breakdown.words.toLocaleString()}</span>
               </div>
             )}
             {breakdown.chinese !== undefined && (
               <div className="flex justify-between">
-                <span className="text-gray-600">Chinese:</span>
+                <span className="text-gray-600 dark:text-gray-400">Chinese:</span>
                 <span className="font-medium">{breakdown.chinese.toLocaleString()}</span>
               </div>
             )}
             {breakdown.whitespace !== undefined && (
               <div className="flex justify-between">
-                <span className="text-gray-600">Whitespace:</span>
+                <span className="text-gray-600 dark:text-gray-400">Whitespace:</span>
                 <span className="font-medium">{breakdown.whitespace.toLocaleString()}</span>
               </div>
             )}
             {breakdown.punctuation !== undefined && (
               <div className="flex justify-between">
-                <span className="text-gray-600">Punctuation:</span>
+                <span className="text-gray-600 dark:text-gray-400">Punctuation:</span>
                 <span className="font-medium">{breakdown.punctuation.toLocaleString()}</span>
               </div>
             )}
             {breakdown.symbols !== undefined && (
               <div className="flex justify-between">
-                <span className="text-gray-600">Symbols:</span>
+                <span className="text-gray-600 dark:text-gray-400">Symbols:</span>
                 <span className="font-medium">{breakdown.symbols.toLocaleString()}</span>
               </div>
             )}

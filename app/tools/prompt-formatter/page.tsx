@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useCallback } from 'react'
-import { AlignLeft, Copy, Check, Info, Trash2, Plus } from 'lucide-react'
+import { useState, useCallback, useEffect } from 'react'
+import { AlignLeft, Copy, Check, Info, Trash2, Plus, Save, FolderOpen, X } from 'lucide-react'
 import { copyToClipboard } from '@/lib/utils'
 
 type MessageRole = 'system' | 'user' | 'assistant'
@@ -10,6 +10,11 @@ interface Message {
   id: string
   role: MessageRole
   content: string
+}
+
+interface Template {
+  name: string
+  messages: Message[]
 }
 
 export default function PromptFormatterPage() {
@@ -23,6 +28,22 @@ export default function PromptFormatterPage() {
     { id: '2', role: 'user', content: 'Hello! Can you help me with something?' },
   ])
   const [copied, setCopied] = useState(false)
+  const [templates, setTemplates] = useState<Template[]>([])
+  const [templateName, setTemplateName] = useState('')
+  const [showSaveInput, setShowSaveInput] = useState(false)
+
+  useEffect(() => {
+    const stored = localStorage.getItem('prompt-templates')
+    if (stored) {
+      try {
+        setTemplates(JSON.parse(stored))
+      } catch {}
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('prompt-templates', JSON.stringify(templates))
+  }, [templates])
 
   const addMessage = useCallback((role: MessageRole) => {
     const newMessage: Message = {
@@ -53,6 +74,21 @@ export default function PromptFormatterPage() {
     setMessages([])
   }, [])
 
+  const saveTemplate = useCallback(() => {
+    const name = templateName.trim() || `Template ${templates.length + 1}`
+    setTemplates((prev) => [...prev, { name, messages }])
+    setTemplateName('')
+    setShowSaveInput(false)
+  }, [templateName, templates.length, messages])
+
+  const loadTemplate = useCallback((template: Template) => {
+    setMessages(template.messages)
+  }, [])
+
+  const deleteTemplate = useCallback((name: string) => {
+    setTemplates((prev) => prev.filter((t) => t.name !== name))
+  }, [])
+
   const formattedOutput = useCallback(() => {
     return messages
       .filter((msg) => msg.content.trim())
@@ -79,9 +115,9 @@ export default function PromptFormatterPage() {
   }, [formattedOutput])
 
   const roleColors: Record<MessageRole, string> = {
-    system: 'bg-purple-50 border-purple-200 text-purple-800',
-    user: 'bg-blue-50 border-blue-200 text-blue-800',
-    assistant: 'bg-green-50 border-green-200 text-green-800',
+    system: 'bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800 text-purple-800 dark:text-purple-300',
+    user: 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-300',
+    assistant: 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 text-green-800 dark:text-green-300',
   }
 
   const roleLabels: Record<MessageRole, string> = {
@@ -91,26 +127,26 @@ export default function PromptFormatterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center p-3 bg-primary-100 rounded-xl mb-4">
-            <AlignLeft className="h-8 w-8 text-primary-600" />
+          <div className="inline-flex items-center justify-center p-3 bg-primary-100 dark:bg-primary-900/30 rounded-xl mb-4">
+            <AlignLeft className="h-8 w-8 text-primary-600 dark:text-primary-400" />
           </div>
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Prompt Formatter
           </h1>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
             Format your prompts with proper structure for system, user, and
             assistant messages. Improve prompt organization.
           </p>
         </div>
 
         {/* Main Tool */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 sm:p-8 transition-colors">
           {/* Add Buttons */}
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="flex flex-wrap gap-2 mb-4">
             <button
               onClick={() => addMessage('system')}
               className="inline-flex items-center gap-1 px-3 py-2 rounded-lg bg-purple-100 text-purple-700 text-sm font-medium hover:bg-purple-200 transition-colors"
@@ -131,16 +167,78 @@ export default function PromptFormatterPage() {
             </button>
             <button
               onClick={clearAll}
-              className="inline-flex items-center gap-1 px-3 py-2 rounded-lg bg-red-100 text-red-700 text-sm font-medium hover:bg-red-200 transition-colors ml-auto"
+              className="inline-flex items-center gap-1 px-3 py-2 rounded-lg bg-red-100 text-red-700 text-sm font-medium hover:bg-red-200 transition-colors"
             >
               <Trash2 className="h-4 w-4" /> Clear All
             </button>
-          </div>
+            </div>
+
+          {/* Template Bar */}
+          <div className="flex flex-wrap items-center gap-2 mb-6 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+            <FolderOpen className="h-4 w-4 text-gray-500 dark:text-gray-400" />
+            <span className="text-sm text-gray-600 dark:text-gray-300 mr-1">Templates:</span>
+            {templates.length === 0 ? (
+              <span className="text-sm text-gray-400 dark:text-gray-500">No saved templates</span>
+            ) : (
+              <div className="flex flex-wrap gap-2">
+                {templates.map((t) => (
+                  <div key={t.name} className="flex items-center gap-1">
+                    <button
+                      onClick={() => loadTemplate(t)}
+                      className="text-xs px-2 py-1 rounded bg-white dark:bg-gray-600 border border-gray-200 dark:border-gray-500 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-500 transition-colors"
+                    >
+                      {t.name}
+                    </button>
+                    <button
+                      onClick={() => deleteTemplate(t.name)}
+                      className="text-gray-400 hover:text-red-500 transition-colors"
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+            <div className="ml-auto flex items-center gap-2">
+              {showSaveInput ? (
+                <>
+                  <input
+                    type="text"
+                    value={templateName}
+                    onChange={(e) => setTemplateName(e.target.value)}
+                    placeholder="Template name..."
+                    className="text-sm px-2 py-1 rounded border border-gray-200 dark:border-gray-500 bg-white dark:bg-gray-600 text-gray-900 dark:text-gray-100 w-32"
+                    onKeyDown={(e) => e.key === 'Enter' && saveTemplate()}
+                    autoFocus
+                  />
+                  <button
+                    onClick={saveTemplate}
+                    className="inline-flex items-center gap-1 px-2 py-1 rounded bg-primary-100 text-primary-700 text-xs font-medium hover:bg-primary-200 transition-colors"
+                  >
+                    <Save className="h-3 w-3" /> Save
+                  </button>
+                  <button
+                    onClick={() => { setShowSaveInput(false); setTemplateName('') }}
+                    className="text-gray-400 hover:text-gray-600 transition-colors"
+                  >
+                    <X className="h-3 w-3" />
+                  </button>
+                </>
+              ) : (
+                <button
+                  onClick={() => setShowSaveInput(true)}
+                  className="inline-flex items-center gap-1 px-2 py-1 rounded bg-white dark:bg-gray-600 border border-gray-200 dark:border-gray-500 text-gray-600 dark:text-gray-300 text-xs hover:bg-gray-50 dark:hover:bg-gray-500 transition-colors"
+                >
+                  <Save className="h-3 w-3" /> Save Current
+                </button>
+              )}
+            </div>
+            </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Input Section */}
             <div className="space-y-4">
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Messages
               </label>
               {messages.length === 0 ? (
@@ -161,7 +259,7 @@ export default function PromptFormatterPage() {
                         onChange={(e) =>
                           updateRole(message.id, e.target.value as MessageRole)
                         }
-                        className="text-sm font-medium bg-white border border-gray-200 rounded px-2 py-1"
+                        className="text-sm font-medium bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded px-2 py-1 text-gray-900 dark:text-gray-100"
                       >
                         <option value="system">System</option>
                         <option value="user">User</option>
@@ -180,7 +278,7 @@ export default function PromptFormatterPage() {
                         updateMessage(message.id, e.target.value)
                       }
                       placeholder={`Enter ${message.role} message...`}
-                      className="block w-full rounded-lg border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm min-h-[80px] resize-y bg-white"
+                      className="block w-full rounded-lg border-0 py-2 px-3 text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm min-h-[80px] resize-y bg-white dark:bg-gray-700"
                     />
                   </div>
                 ))
@@ -190,7 +288,7 @@ export default function PromptFormatterPage() {
             {/* Output Section */}
             <div>
               <div className="flex items-center justify-between mb-3">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Formatted Output
                 </label>
                 <button
@@ -225,19 +323,19 @@ export default function PromptFormatterPage() {
                 </pre>
               </div>
             </div>
-          </div>
+            </div>
         </div>
 
         {/* Info Section */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
             <div className="flex items-center gap-2 mb-4">
-              <Info className="h-5 w-5 text-primary-600" />
-              <h2 className="text-lg font-semibold text-gray-900">
+              <Info className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                 Message Roles
               </h2>
             </div>
-            <div className="space-y-3 text-sm text-gray-600">
+            <div className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
               <div>
                 <span className="font-medium text-purple-700">System:</span>
                 <p>
@@ -260,16 +358,16 @@ export default function PromptFormatterPage() {
                 </p>
               </div>
             </div>
-          </div>
+            </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
             <div className="flex items-center gap-2 mb-4">
-              <AlignLeft className="h-5 w-5 text-primary-600" />
-              <h2 className="text-lg font-semibold text-gray-900">
+              <AlignLeft className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                 Best Practices
               </h2>
             </div>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
               <li className="flex items-start gap-2">
                 <span className="text-primary-600">•</span>
                 <span>
@@ -293,7 +391,7 @@ export default function PromptFormatterPage() {
                 <span>Test and iterate on your prompts</span>
               </li>
             </ul>
-          </div>
+            </div>
         </div>
 
         {/* FAQ Section */}
@@ -302,11 +400,11 @@ export default function PromptFormatterPage() {
             Frequently Asked Questions
           </h2>
           <div className="space-y-4">
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 What is the system message for?
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 The system message sets the overall behavior and context for
                 the AI. It&apos;s used to define the AI&apos;s role, personality,
                 constraints, and any special instructions that should apply to
@@ -315,11 +413,11 @@ export default function PromptFormatterPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 When should I include assistant messages?
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Include assistant messages when you want to provide examples
                 of desired responses (few-shot prompting) or when continuing
                 an existing conversation. This helps the AI understand the
@@ -327,11 +425,11 @@ export default function PromptFormatterPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 Which output format should I use?
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Use the XML format for general readability and when sharing
                 prompts with others. Use the JSON format when integrating with
                 APIs or when you need a structured data format. Both represent
@@ -339,18 +437,18 @@ export default function PromptFormatterPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 How do I write effective system messages?
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Effective system messages are clear, specific, and concise.
                 Define the AI&apos;s role explicitly, set any constraints or rules,
                 and provide context about the task. Avoid ambiguity and test
                 different variations to see what works best for your use case.
               </p>
             </div>
-          </div>
+            </div>
         </div>
       </div>
     </div>

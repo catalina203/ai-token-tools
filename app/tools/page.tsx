@@ -105,13 +105,13 @@ const tools = [
 
 export default function ToolsPage() {
   return (
-    <div className="bg-gray-50 min-h-screen">
+    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors">
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
             All Tools
           </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
             A complete collection of free AI developer tools. All tools run
             entirely in your browser for maximum privacy and speed.
           </p>
@@ -125,43 +125,43 @@ export default function ToolsPage() {
 
         {/* FAQ Section for SEO */}
         <div className="mx-auto max-w-3xl mt-24">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             Frequently Asked Questions
           </h2>
           <div className="space-y-6">
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm transition-colors">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
                 Are these tools free to use?
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Yes, all our AI developer tools are completely free to use. No
                 registration or API key required.
               </p>
             </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm transition-colors">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
                 Is my data safe?
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Absolutely. All processing happens locally in your browser. Your
                 text and prompts never leave your device.
               </p>
             </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm transition-colors">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
                 How accurate is the token calculator?
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Our token calculator provides estimates based on standard
                 tokenization algorithms. While very accurate, actual token
                 counts may vary slightly depending on the specific model.
               </p>
             </div>
-            <div className="bg-white rounded-lg p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm transition-colors">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
                 Which AI models are supported?
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 We support all major AI providers including OpenAI (GPT-4,
                 GPT-3.5), Anthropic (Claude), Google (Gemini), Mistral, and
                 Cohere.

@@ -42,7 +42,7 @@ export default function TokenInput({
   return (
     <div className="w-full">
       {label && (
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
           {label}
         </label>
       )}
@@ -52,13 +52,13 @@ export default function TokenInput({
           onChange={handleChange}
           placeholder={placeholder}
           maxLength={maxLength}
-          className="block w-full rounded-lg border-0 py-3 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 min-h-[150px] resize-y"
+          className="block w-full rounded-lg border-0 py-3 px-4 text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 min-h-[150px] resize-y bg-white dark:bg-gray-700"
         />
         <div className="absolute bottom-2 right-2 flex gap-2">
           {value && (
             <button
               onClick={handleClear}
-              className="text-xs text-gray-500 hover:text-gray-700 bg-white px-2 py-1 rounded border border-gray-200"
+              className="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 bg-white dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-600"
               type="button"
             >
               Clear
@@ -66,7 +66,7 @@ export default function TokenInput({
           )}
           <button
             onClick={handlePaste}
-            className="text-xs text-primary-600 hover:text-primary-700 bg-white px-2 py-1 rounded border border-gray-200"
+            className="text-xs text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 bg-white dark:bg-gray-800 px-2 py-1 rounded border border-gray-200 dark:border-gray-600"
             type="button"
           >
             Paste
@@ -74,7 +74,7 @@ export default function TokenInput({
         </div>
       </div>
       {showCharacterCount && (
-        <div className="mt-2 text-right text-sm text-gray-500">
+        <div className="mt-2 text-right text-sm text-gray-500 dark:text-gray-400">
           {value.length.toLocaleString()} characters
         </div>
       )}

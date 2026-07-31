@@ -56,47 +56,47 @@ export default function PromptDiffPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center p-3 bg-primary-100 rounded-xl mb-4">
-            <GitCompare className="h-8 w-8 text-primary-600" />
+          <div className="inline-flex items-center justify-center p-3 bg-primary-100 dark:bg-primary-900/30 rounded-xl mb-4">
+            <GitCompare className="h-8 w-8 text-primary-600 dark:text-primary-400" />
           </div>
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Prompt Diff Tool
           </h1>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
             Compare two prompts side by side and highlight the differences.
             Perfect for tracking prompt iterations.
           </p>
         </div>
 
         {/* Main Tool */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 sm:p-8 transition-colors">
           {/* Stats */}
           <div className="flex flex-wrap gap-4 mb-6">
-            <div className="flex items-center gap-2 px-4 py-2 bg-green-50 rounded-lg">
+            <div className="flex items-center gap-2 px-4 py-2 bg-green-50 dark:bg-green-900/30 rounded-lg">
               <div className="w-3 h-3 bg-green-500 rounded"></div>
-              <span className="text-sm font-medium text-green-700">
+              <span className="text-sm font-medium text-green-700 dark:text-green-400">
                 {stats.added} added
               </span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-red-50 rounded-lg">
+            <div className="flex items-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-900/30 rounded-lg">
               <div className="w-3 h-3 bg-red-500 rounded"></div>
-              <span className="text-sm font-medium text-red-700">
+              <span className="text-sm font-medium text-red-700 dark:text-red-400">
                 {stats.removed} removed
               </span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-lg">
+            <div className="flex items-center gap-2 px-4 py-2 bg-gray-50 dark:bg-gray-700 rounded-lg">
               <div className="w-3 h-3 bg-gray-400 rounded"></div>
-              <span className="text-sm font-medium text-gray-600">
+              <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
                 {stats.unchanged} unchanged
               </span>
             </div>
             <button
               onClick={handleCopyDiff}
-              className="flex items-center gap-1 ml-auto text-sm text-primary-600 hover:text-primary-700"
+              className="flex items-center gap-1 ml-auto text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300"
             >
               {copied ? (
                 <>
@@ -108,39 +108,39 @@ export default function PromptDiffPage() {
                 </>
               )}
             </button>
-          </div>
+            </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Original */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Original Prompt
               </label>
               <textarea
                 value={originalText}
                 onChange={(e) => setOriginalText(e.target.value)}
                 placeholder="Enter original prompt..."
-                className="block w-full rounded-lg border-0 py-3 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 min-h-[200px] resize-y font-mono"
+                className="block w-full rounded-lg border-0 py-3 px-4 text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 min-h-[200px] resize-y font-mono"
               />
             </div>
 
             {/* Modified */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Modified Prompt
               </label>
               <textarea
                 value={modifiedText}
                 onChange={(e) => setModifiedText(e.target.value)}
                 placeholder="Enter modified prompt..."
-                className="block w-full rounded-lg border-0 py-3 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 min-h-[200px] resize-y font-mono"
+                className="block w-full rounded-lg border-0 py-3 px-4 text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 min-h-[200px] resize-y font-mono"
               />
             </div>
-          </div>
+            </div>
 
           {/* Diff View */}
           <div className="mt-8">
-            <label className="block text-sm font-medium text-gray-700 mb-3">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
               Difference View
             </label>
             <div className="bg-gray-900 rounded-xl p-4 overflow-x-auto">
@@ -179,35 +179,35 @@ export default function PromptDiffPage() {
                 })}
               </pre>
             </div>
-          </div>
+            </div>
         </div>
 
         {/* Info Section */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
             <div className="flex items-center gap-2 mb-4">
-              <Info className="h-5 w-5 text-primary-600" />
-              <h2 className="text-lg font-semibold text-gray-900">
+              <Info className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                 Why Compare Prompts?
               </h2>
             </div>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
               Comparing prompts helps you understand what changes improve or
               degrade performance. It&apos;s essential for prompt engineering
               workflows, A/B testing, and maintaining version control of your
               prompts. By visualizing differences, you can quickly identify
               what modifications were made between iterations.
             </p>
-          </div>
+            </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
             <div className="flex items-center gap-2 mb-4">
-              <GitCompare className="h-5 w-5 text-primary-600" />
-              <h2 className="text-lg font-semibold text-gray-900">
+              <GitCompare className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                 Diff Legend
               </h2>
             </div>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
               <li className="flex items-center gap-2">
                 <div className="w-4 h-4 bg-green-500 rounded flex items-center justify-center text-white text-xs">
                   +
@@ -227,7 +227,7 @@ export default function PromptDiffPage() {
                 <span>Gray - Unchanged content</span>
               </li>
             </ul>
-          </div>
+            </div>
         </div>
 
         {/* FAQ Section */}
@@ -236,11 +236,11 @@ export default function PromptDiffPage() {
             Frequently Asked Questions
           </h2>
           <div className="space-y-4">
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 What is prompt diffing?
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Prompt diffing is the process of comparing two versions of a
                 prompt to identify what has changed. It shows additions,
                 deletions, and unchanged content, making it easy to track
@@ -248,11 +248,11 @@ export default function PromptDiffPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 How can this help with prompt engineering?
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 When iterating on prompts, it&apos;s easy to lose track of what
                 changes were made. This tool helps you document changes, compare
                 performance between versions, and collaborate with team members
@@ -260,11 +260,11 @@ export default function PromptDiffPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 Can I compare more than two prompts?
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 This tool compares two prompts at a time. For tracking multiple
                 versions, we recommend comparing sequentially (v1 vs v2, then
                 v2 vs v3) or using the copy feature to save diffs for
@@ -272,17 +272,17 @@ export default function PromptDiffPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 Is my prompt data secure?
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Yes, all comparison happens locally in your browser. Your
                 prompts are never sent to any server, ensuring complete privacy
                 and security for your sensitive prompt content.
               </p>
             </div>
-          </div>
+            </div>
         </div>
       </div>
     </div>

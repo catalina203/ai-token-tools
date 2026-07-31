@@ -44,33 +44,33 @@ export default function TokenCostCalculatorPage() {
     .find((m) => m.id === selectedModel)
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center p-3 bg-primary-100 rounded-xl mb-4">
-            <DollarSign className="h-8 w-8 text-primary-600" />
+          <div className="inline-flex items-center justify-center p-3 bg-primary-100 dark:bg-primary-900/30 rounded-xl mb-4">
+            <DollarSign className="h-8 w-8 text-primary-600 dark:text-primary-400" />
           </div>
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Token Cost Calculator
           </h1>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
             Calculate API costs for different AI models. Compare prices and
             find the most cost-effective option.
           </p>
         </div>
 
         {/* Main Tool */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 sm:p-8 transition-colors">
           {/* Input Mode Toggle */}
           <div className="flex justify-center mb-6">
-            <div className="inline-flex rounded-lg border border-gray-200 p-1 bg-gray-50">
+            <div className="inline-flex rounded-lg border border-gray-200 dark:border-gray-600 p-1 bg-gray-50 dark:bg-gray-700">
               <button
                 onClick={() => setUseTextInput(true)}
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                   useTextInput
-                    ? 'bg-white text-gray-900 shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm'
+                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100'
                 }`}
               >
                 Text Input
@@ -79,14 +79,14 @@ export default function TokenCostCalculatorPage() {
                 onClick={() => setUseTextInput(false)}
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                   !useTextInput
-                    ? 'bg-white text-gray-900 shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm'
+                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100'
                 }`}
               >
                 Token Count
               </button>
             </div>
-          </div>
+            </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Input Section */}
@@ -94,28 +94,28 @@ export default function TokenCostCalculatorPage() {
               {useTextInput ? (
                 <>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Input Text (Prompt)
                     </label>
                     <textarea
                       value={inputText}
                       onChange={(e) => setInputText(e.target.value)}
                       placeholder="Enter your input text..."
-                      className="block w-full rounded-lg border-0 py-3 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 min-h-[120px] resize-y"
+                      className="block w-full rounded-lg border-0 py-3 px-4 text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 min-h-[120px] resize-y bg-white dark:bg-gray-700"
                     />
                     <p className="mt-1 text-sm text-gray-500">
                       ~{calculatedInputTokens.toLocaleString()} tokens
                     </p>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Expected Output Text
                     </label>
                     <textarea
                       value={outputText}
                       onChange={(e) => setOutputText(e.target.value)}
                       placeholder="Enter expected output (optional)..."
-                      className="block w-full rounded-lg border-0 py-3 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 min-h-[120px] resize-y"
+                      className="block w-full rounded-lg border-0 py-3 px-4 text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 min-h-[120px] resize-y bg-white dark:bg-gray-700"
                     />
                     <p className="mt-1 text-sm text-gray-500">
                       ~{calculatedOutputTokens.toLocaleString()} tokens
@@ -125,7 +125,7 @@ export default function TokenCostCalculatorPage() {
               ) : (
                 <>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Input Tokens
                     </label>
                     <input
@@ -137,11 +137,11 @@ export default function TokenCostCalculatorPage() {
                         )
                       }
                       placeholder="1000"
-                      className="block w-full rounded-lg border-0 py-3 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-lg border-0 py-3 px-4 text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 bg-white dark:bg-gray-700"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                       Output Tokens
                     </label>
                     <input
@@ -153,7 +153,7 @@ export default function TokenCostCalculatorPage() {
                         )
                       }
                       placeholder="500"
-                      className="block w-full rounded-lg border-0 py-3 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-lg border-0 py-3 px-4 text-gray-900 dark:text-gray-100 shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 bg-white dark:bg-gray-700"
                     />
                   </div>
                 </>
@@ -161,7 +161,7 @@ export default function TokenCostCalculatorPage() {
 
               {/* Model Selection */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Select Model
                 </label>
                 <div className="relative">
@@ -196,86 +196,86 @@ export default function TokenCostCalculatorPage() {
 
             {/* Result Section */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                 Cost Estimate
               </label>
-              <div className="bg-primary-50 rounded-xl p-6 border border-primary-100">
+              <div className="bg-primary-50 dark:bg-primary-900/20 rounded-xl p-6 border border-primary-100 dark:border-primary-800">
                 {costResult ? (
                   <div className="space-y-4">
                     <div className="text-center">
-                      <p className="text-sm text-gray-600 mb-1">Total Cost</p>
-                      <p className="text-4xl font-bold text-primary-600">
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Cost</p>
+                      <p className="text-4xl font-bold text-primary-600 dark:text-primary-400">
                         {formatCost(costResult.totalCost)}
                       </p>
                     </div>
 
-                    <div className="border-t border-primary-200 pt-4 space-y-2">
+                    <div className="border-t border-primary-200 dark:border-primary-800 pt-4 space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Input Cost:</span>
-                        <span className="font-medium">
+                        <span className="text-gray-600 dark:text-gray-400">Input Cost:</span>
+                        <span className="font-medium text-gray-900 dark:text-gray-100">
                           {formatCost(costResult.inputCost)} (
                           {costResult.inputTokens.toLocaleString()} tokens)
                         </span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Output Cost:</span>
-                        <span className="font-medium">
+                        <span className="text-gray-600 dark:text-gray-400">Output Cost:</span>
+                        <span className="font-medium text-gray-900 dark:text-gray-100">
                           {formatCost(costResult.outputCost)} (
                           {costResult.outputTokens.toLocaleString()} tokens)
                         </span>
                       </div>
                     </div>
 
-                    <div className="border-t border-primary-200 pt-4">
-                      <p className="text-sm text-gray-600 mb-2">
+                    <div className="border-t border-primary-200 dark:border-primary-800 pt-4">
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
                         Model Pricing (per 1M tokens):
                       </p>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Input:</span>
-                        <span className="font-medium">
+                        <span className="text-gray-600 dark:text-gray-400">Input:</span>
+                        <span className="font-medium text-gray-900 dark:text-gray-100">
                           {formatPricePerMillion(costResult.model.inputPrice)}
                         </span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-600">Output:</span>
-                        <span className="font-medium">
+                        <span className="text-gray-600 dark:text-gray-400">Output:</span>
+                        <span className="font-medium text-gray-900 dark:text-gray-100">
                           {formatPricePerMillion(costResult.model.outputPrice)}
                         </span>
                       </div>
                     </div>
                   </div>
                 ) : (
-                  <p className="text-center text-gray-500">
+                  <p className="text-center text-gray-500 dark:text-gray-400">
                     Select a model to see cost estimate
                   </p>
                 )}
               </div>
             </div>
-          </div>
+            </div>
         </div>
 
         {/* Info Section */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
             <div className="flex items-center gap-2 mb-4">
-              <Info className="h-5 w-5 text-primary-600" />
-              <h2 className="text-lg font-semibold text-gray-900">
+              <Info className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                 Understanding API Costs
               </h2>
             </div>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
               AI API costs are typically charged per 1,000 tokens (or per 1M
               tokens for some providers). Input tokens (your prompt) and output
               tokens (the AI&apos;s response) are often priced differently.
               Understanding these costs helps you optimize your applications
               and choose the right model for your budget.
             </p>
-          </div>
+            </div>
 
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
             <div className="flex items-center gap-2 mb-4">
-              <Calculator className="h-5 w-5 text-primary-600" />
-              <h2 className="text-lg font-semibold text-gray-900">
+              <Calculator className="h-5 w-5 text-primary-600 dark:text-primary-400" />
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                 Cost Optimization Tips
               </h2>
             </div>
@@ -297,7 +297,7 @@ export default function TokenCostCalculatorPage() {
                 <span>Compare prices across providers regularly</span>
               </li>
             </ul>
-          </div>
+            </div>
         </div>
 
         {/* FAQ Section */}
@@ -306,7 +306,7 @@ export default function TokenCostCalculatorPage() {
             Frequently Asked Questions
           </h2>
           <div className="space-y-4">
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 How are AI API costs calculated?
               </h3>
@@ -319,7 +319,7 @@ export default function TokenCostCalculatorPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 What&apos;s the difference between input and output tokens?
               </h3>
@@ -332,7 +332,7 @@ export default function TokenCostCalculatorPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 Which AI model is the most cost-effective?
               </h3>
@@ -345,7 +345,7 @@ export default function TokenCostCalculatorPage() {
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700 transition-colors">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 Are the prices shown up-to-date?
               </h3>
@@ -356,7 +356,7 @@ export default function TokenCostCalculatorPage() {
                 pricing information before making decisions.
               </p>
             </div>
-          </div>
+            </div>
         </div>
       </div>
     </div>

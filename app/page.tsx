@@ -107,15 +107,21 @@ const tools = [
 
 export default function Home() {
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900 transition-colors">
       {/* Hero Section */}
-      <div className="relative isolate overflow-hidden bg-gradient-to-b from-primary-50 to-white">
+      <div className="relative isolate overflow-hidden bg-gradient-to-b from-primary-50 dark:from-primary-950 to-white dark:to-gray-900">
+        {/* Decorative background */}
+        <div className="absolute inset-0 -z-10" aria-hidden="true">
+          <div className="absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-primary-200/30 dark:bg-primary-600/10 blur-3xl" />
+          <div className="absolute -left-32 top-40 h-64 w-64 rounded-full bg-blue-300/20 dark:bg-blue-500/5 blur-2xl" />
+          <div className="absolute -right-32 top-64 h-64 w-64 rounded-full bg-indigo-300/20 dark:bg-indigo-500/5 blur-2xl" />
+        </div>
         <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
               Free AI Developer Tools
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
               A collection of free tools for AI developers. Calculate tokens,
               estimate API costs, format prompts, and optimize your AI
               applications.
@@ -129,7 +135,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/tools/token-calculator/"
-                className="text-base font-semibold leading-6 text-gray-900 flex items-center gap-1 hover:text-primary-600 transition-colors"
+                className="text-base font-semibold leading-6 text-gray-900 dark:text-gray-100 flex items-center gap-1 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
               >
                 Try Token Calculator <ArrowRight className="h-4 w-4" />
               </Link>
@@ -141,10 +147,10 @@ export default function Home() {
       {/* Tools Section */}
       <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             All Tools
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
             Everything you need to optimize your AI development workflow. All
             tools are free to use and run entirely in your browser.
           </p>
@@ -157,17 +163,17 @@ export default function Home() {
       </div>
 
       {/* Features Section */}
-      <div className="bg-gray-50 py-24">
+      <div className="bg-gray-50 dark:bg-gray-800 py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               Why Use Our Tools?
             </h2>
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
               <div className="flex flex-col">
-                <dt className="text-base font-semibold leading-7 text-gray-900">
+                <dt className="text-base font-semibold leading-7 text-gray-900 dark:text-gray-100">
                   <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-primary-600">
                     <Calculator
                       className="h-6 w-6 text-white"
@@ -176,7 +182,7 @@ export default function Home() {
                   </div>
                   Accurate Calculations
                 </dt>
-                <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
+                <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
                   <p className="flex-auto">
                     Our token calculator uses industry-standard algorithms to
                     provide accurate estimates for various AI models.
@@ -184,7 +190,7 @@ export default function Home() {
                 </dd>
               </div>
               <div className="flex flex-col">
-                <dt className="text-base font-semibold leading-7 text-gray-900">
+                <dt className="text-base font-semibold leading-7 text-gray-900 dark:text-gray-100">
                   <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-primary-600">
                     <DollarSign
                       className="h-6 w-6 text-white"
@@ -193,7 +199,7 @@ export default function Home() {
                   </div>
                   Cost Optimization
                 </dt>
-                <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
+                <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
                   <p className="flex-auto">
                     Compare prices across different AI providers to find the
                     most cost-effective solution for your use case.
@@ -201,7 +207,7 @@ export default function Home() {
                 </dd>
               </div>
               <div className="flex flex-col">
-                <dt className="text-base font-semibold leading-7 text-gray-900">
+                <dt className="text-base font-semibold leading-7 text-gray-900 dark:text-gray-100">
                   <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-primary-600">
                     <Eye
                       className="h-6 w-6 text-white"
@@ -210,7 +216,7 @@ export default function Home() {
                   </div>
                   Privacy First
                 </dt>
-                <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
+                <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600 dark:text-gray-300">
                   <p className="flex-auto">
                     All processing happens in your browser. Your data never
                     leaves your device, ensuring complete privacy.

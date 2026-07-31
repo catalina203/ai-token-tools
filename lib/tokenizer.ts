@@ -3,6 +3,29 @@
  * Based on OpenAI's GPT tokenization patterns
  */
 
+export const MODEL_TOKENIZERS = {
+  'gpt-4o': { name: 'GPT-4o', factor: 1.0 },
+  'gpt-4o-mini': { name: 'GPT-4o Mini', factor: 1.0 },
+  'gpt-4-turbo': { name: 'GPT-4 Turbo', factor: 1.0 },
+  'gpt-3.5-turbo': { name: 'GPT-3.5 Turbo', factor: 1.0 },
+  'o1-preview': { name: 'o1 Preview', factor: 1.05 },
+  'o1-mini': { name: 'o1 Mini', factor: 1.05 },
+  'claude-3.5-sonnet': { name: 'Claude 3.5 Sonnet', factor: 1.1 },
+  'claude-3-opus': { name: 'Claude 3 Opus', factor: 1.1 },
+  'claude-3-sonnet': { name: 'Claude 3 Sonnet', factor: 1.1 },
+  'claude-3-haiku': { name: 'Claude 3 Haiku', factor: 1.1 },
+  'gemini-1.5-pro': { name: 'Gemini 1.5 Pro', factor: 0.95 },
+  'gemini-1.5-flash': { name: 'Gemini 1.5 Flash', factor: 0.95 },
+  'gemini-1.0-pro': { name: 'Gemini 1.0 Pro', factor: 0.95 },
+  'mistral-large': { name: 'Mistral Large', factor: 1.0 },
+  'mistral-medium': { name: 'Mistral Medium', factor: 1.0 },
+  'mistral-small': { name: 'Mistral Small', factor: 1.0 },
+  'command-r-plus': { name: 'Command R+', factor: 1.0 },
+  'command-r': { name: 'Command R', factor: 1.0 },
+} as const
+
+export type ModelId = keyof typeof MODEL_TOKENIZERS
+
 // Average characters per token for different languages
 const CHARS_PER_TOKEN = {
   english: 4,
@@ -29,10 +52,9 @@ function detectLanguageType(text: string): keyof typeof CHARS_PER_TOKEN {
 }
 
 /**
- * Estimate token count from text
- * This is an approximation based on character count
+ * Estimate token count from text with optional model specificity
  */
-export function estimateTokenCount(text: string): number {
+export function estimateTokenCount(text: string, modelId?: ModelId): number {
   if (!text || text.trim().length === 0) {
     return 0
   }
@@ -40,16 +62,17 @@ export function estimateTokenCount(text: string): number {
   const languageType = detectLanguageType(text)
   const charsPerToken = CHARS_PER_TOKEN[languageType]
 
-  // Base calculation
   let tokenCount = Math.ceil(text.length / charsPerToken)
 
-  // Adjust for whitespace (tokens often split on whitespace)
   const whitespaceCount = (text.match(/\s/g) || []).length
   tokenCount += Math.floor(whitespaceCount / 4)
 
-  // Adjust for special characters and punctuation
   const specialChars = (text.match(/[.,!?;:'"()-]/g) || []).length
   tokenCount += Math.floor(specialChars / 3)
+
+  if (modelId && MODEL_TOKENIZERS[modelId]) {
+    tokenCount = Math.round(tokenCount * MODEL_TOKENIZERS[modelId].factor)
+  }
 
   return Math.max(1, tokenCount)
 }
@@ -111,7 +134,7 @@ export interface TokenStats {
   }
 }
 
-export function getTokenStats(text: string): TokenStats {
+export function getTokenStats(text: string, modelId?: ModelId): TokenStats {
   const tokens = tokenizeText(text)
   const languageType = detectLanguageType(text)
 
@@ -124,7 +147,7 @@ export function getTokenStats(text: string): TokenStats {
   }
 
   return {
-    totalTokens: estimateTokenCount(text),
+    totalTokens: estimateTokenCount(text, modelId),
     estimatedChars: text.length,
     languageType,
     breakdown,
