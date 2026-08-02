@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { BookOpen, ChevronRight, Code, Terminal, Zap, FileText, BarChart3, Ruler } from 'lucide-react'
+import { BookOpen, ChevronRight, Code, Terminal, Zap, FileText, BarChart3, Ruler, Layers, Scissors } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'User Guide - AI Token Tools',
@@ -122,6 +122,42 @@ export default function GuidePage() {
         'View the estimated token count',
         'Check which models can handle your prompt',
         'Adjust your prompt if it exceeds context limits',
+      ],
+    },
+    {
+      id: 'embedding-cost-calculator',
+      title: 'Embedding Cost Calculator',
+      description: 'Calculate AI embedding costs for RAG applications',
+      icon: <Layers className="h-6 w-6 text-primary-600" />,
+      steps: [
+        'Choose between text input or direct token count',
+        'Select the embedding model you want to use',
+        'View the estimated cost breakdown',
+        'Compare prices across all embedding models',
+      ],
+    },
+    {
+      id: 'text-chunker',
+      title: 'Text Chunker',
+      description: 'Split long text into context-window-sized chunks',
+      icon: <Scissors className="h-6 w-6 text-primary-600" />,
+      steps: [
+        'Paste your long document or text',
+        'Set the target chunk size and overlap',
+        'Review the generated chunks',
+        'Copy individual chunks or export all',
+      ],
+    },
+    {
+      id: 'prompt-template-library',
+      title: 'Prompt Template Library',
+      description: 'Browse ready-to-use prompt templates',
+      icon: <FileText className="h-6 w-6 text-primary-600" />,
+      steps: [
+        'Browse templates by category',
+        'Expand a template to see its content',
+        'Fill in the variables',
+        'Copy the completed prompt or format it',
       ],
     },
   ]

@@ -1,0 +1,107 @@
+[
+  {
+    "id": "code-review",
+    "name": "Code Review",
+    "category": "coding",
+    "description": "Review code for bugs, security issues, and best practices",
+    "content": "You are a senior software engineer. Review the following code for:\n1. Bugs and logical errors\n2. Security vulnerabilities\n3. Performance issues\n4. Code style and best practices\n5. Suggestions for improvement\n\nCode:\n```\n{code}\n```\n\nPlease provide a structured review with severity levels for each finding."
+  },
+  {
+    "id": "explain-code",
+    "name": "Explain Code",
+    "category": "coding",
+    "description": "Get a clear explanation of what a piece of code does",
+    "content": "You are an expert programmer who excels at explaining code. Explain the following code in detail, including:\n1. What the code does at a high level\n2. How each part works\n3. Key algorithms or patterns used\n4. Potential edge cases or issues\n\nCode:\n```\n{code}\n```"
+  },
+  {
+    "id": "generate-unit-tests",
+    "name": "Generate Unit Tests",
+    "category": "coding",
+    "description": "Create comprehensive unit tests for your code",
+    "content": "You are a testing expert. Write comprehensive unit tests for the following code:\n1. Test normal cases\n2. Test edge cases\n3. Test error handling\n4. Use descriptive test names\n\nCode:\n```\n{code}\n```\n\nOutput the tests in {language} using {framework}."
+  },
+  {
+    "id": "translate",
+    "name": "Professional Translator",
+    "category": "writing",
+    "description": "Translate text with context and nuance preservation",
+    "content": "You are a professional translator. Translate the following text from {source_language} to {target_language}.\n\nRequirements:\n- Preserve the original tone and style\n- Adapt cultural references appropriately\n- Keep technical terms accurate\n- Provide a natural translation, not word-for-word\n\nText:\n{text}"
+  },
+  {
+    "id": "summarize",
+    "name": "Text Summarizer",
+    "category": "writing",
+    "description": "Condense long documents into key points",
+    "content": "You are a skilled editor. Summarize the following text while:\n1. Capturing all key points and main ideas\n2. Maintaining factual accuracy\n3. Being concise and well-organized\n4. Using clear bullet points or sections\n\nTarget length: {length}\n\nText:\n{text}"
+  },
+  {
+    "id": "rewrite",
+    "name": "Rewrite & Improve",
+    "category": "writing",
+    "description": "Improve clarity, tone, and style of your writing",
+    "content": "You are an expert editor. Rewrite the following text to improve:\n1. Clarity and readability\n2. Tone (target: {tone})\n3. Grammar and flow\n4. Conciseness\n\nOriginal text:\n{text}\n\nProvide the improved version, then a brief explanation of the key changes."
+  },
+  {
+    "id": "data-analysis",
+    "name": "Data Analysis",
+    "category": "analysis",
+    "description": "Analyze data and extract actionable insights",
+    "content": "You are a data analyst. Analyze the following data and provide:\n1. Key trends and patterns\n2. Notable outliers or anomalies\n3. Actionable insights\n4. Recommended next steps\n\nData:\n{data}"
+  },
+  {
+    "id": "sql-generator",
+    "name": "SQL Query Generator",
+    "category": "analysis",
+    "description": "Generate SQL queries from natural language",
+    "content": "You are a database expert. Write a SQL query based on the following request.\n\nDatabase schema:\n{schema}\n\nRequest:\n{request}\n\nProvide the SQL query and explain what it does."
+  },
+  {
+    "id": "customer-support",
+    "name": "Customer Support Reply",
+    "category": "business",
+    "description": "Draft professional customer service responses",
+    "content": "You are a customer support specialist. Draft a professional and empathetic reply to the following customer message. The tone should be: {tone}\n\nCustomer message:\n{message}\n\nInclude: acknowledgment, resolution or next steps, and a friendly closing."
+  },
+  {
+    "id": "email",
+    "name": "Professional Email Writer",
+    "category": "business",
+    "description": "Compose clear, professional emails",
+    "content": "You are a professional business writer. Write an email based on the following requirements.\n\nPurpose: {purpose}\nRecipient: {recipient}\nKey points to include:\n{points}\n\nMake it clear, concise, and professional."
+  },
+  {
+    "id": "product-description",
+    "name": "Product Description",
+    "category": "business",
+    "description": "Create compelling product descriptions",
+    "content": "You are a marketing copywriter. Write a compelling product description for the following product.\n\nProduct: {product}\nTarget audience: {audience}\nKey features: {features}\n\nInclude: attention-grabbing opening, benefit-focused copy, and a call to action."
+  },
+  {
+    "id": "lesson-plan",
+    "name": "Lesson Plan Creator",
+    "category": "education",
+    "description": "Design structured lesson plans for teaching",
+    "content": "You are an experienced teacher. Create a lesson plan for the following topic.\n\nTopic: {topic}\nGrade level: {level}\nDuration: {duration}\n\nInclude: learning objectives, materials needed, step-by-step activities, and assessment methods."
+  },
+  {
+    "id": "quiz-generator",
+    "name": "Quiz Generator",
+    "category": "education",
+    "description": "Create quizzes to test knowledge",
+    "content": "You are an educator. Create a quiz about: {topic}\n\nInclude:\n1. {num_questions} multiple-choice questions\n2. 3 true/false questions\n3. 2 short answer questions\n4. Answer key with brief explanations"
+  },
+  {
+    "id": "brainstorm",
+    "name": "Idea Brainstorm",
+    "category": "creative",
+    "description": "Generate creative ideas on any topic",
+    "content": "You are a creative thinking partner. Brainstorm ideas about: {topic}\n\nConsider different angles including:\n- Practical and feasible options\n- Bold and innovative ideas\n- Low-cost and quick wins\n- Long-term strategies\n\nProvide at least 10 ideas organized by category."
+  },
+  {
+    "id": "creative-story",
+    "name": "Creative Story Writing",
+    "category": "creative",
+    "description": "Craft engaging stories from a prompt",
+    "content": "You are a talented fiction writer. Write a {genre} story based on the following:\n\nSetting: {setting}\nMain character: {character}\nPlot idea: {plot}\n\nCreate a compelling narrative with vivid descriptions, engaging dialogue, and a satisfying conclusion."
+  }
+]

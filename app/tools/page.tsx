@@ -7,6 +7,9 @@ import {
   GitCompare,
   BarChart3,
   Ruler,
+  Layers,
+  Scissors,
+  FileText,
 } from 'lucide-react'
 import ToolCard from '@/components/ToolCard'
 
@@ -100,6 +103,27 @@ const tools = [
       'Check if your prompt fits within the context limits of various AI models. Avoid truncation issues.',
     href: '/tools/context-length-checker/',
     icon: Ruler,
+  },
+  {
+    title: 'Embedding Cost Calculator',
+    description:
+      'Calculate embedding costs for RAG applications. Compare OpenAI, Cohere, and Mistral embedding prices.',
+    href: '/tools/embedding-cost-calculator/',
+    icon: Layers,
+  },
+  {
+    title: 'Text Chunker',
+    description:
+      'Split long text into context-window-sized chunks with configurable overlap. Perfect for RAG and summarization.',
+    href: '/tools/text-chunker/',
+    icon: Scissors,
+  },
+  {
+    title: 'Prompt Template Library',
+    description:
+      'Ready-to-use prompt templates for coding, writing, analysis, and more. Customize variables and copy.',
+    href: '/tools/prompt-template-library/',
+    icon: FileText,
   },
 ]
 

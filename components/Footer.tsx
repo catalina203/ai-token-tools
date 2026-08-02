@@ -12,6 +12,9 @@ const footerLinks = {
     { name: 'Prompt Diff', href: '/tools/prompt-diff/' },
     { name: 'Model Price Comparison', href: '/tools/model-price-comparison/' },
     { name: 'Context Length Checker', href: '/tools/context-length-checker/' },
+    { name: 'Embedding Cost Calculator', href: '/tools/embedding-cost-calculator/' },
+    { name: 'Text Chunker', href: '/tools/text-chunker/' },
+    { name: 'Prompt Template Library', href: '/tools/prompt-template-library/' },
   ],
 }
 
